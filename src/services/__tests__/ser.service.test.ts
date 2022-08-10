@@ -8,6 +8,7 @@ import {
 // the logic for testing of the user service begins!
 describe("user service", () => {
     // after all the test in this 'user service' block runs, the code below (i.e deleteAllUsers) will run
+    // just realizing now that the teacher said the below function will only run before all test will kick-off
     afterAll(async () => {
         await deleteAllUsers()
     })
@@ -25,7 +26,7 @@ describe("user service", () => {
         email: 'email@example.com'
     }
 
-    // test block for creating a new user
+    // test for creating a new user
     describe("create user", () => {
         describe("Given the input is valid", () => {
             it("should create a new user", async () => {
@@ -42,7 +43,7 @@ describe("user service", () => {
         })
     })
 
-    // test block for logging in a user
+    // test for logging in a user
     describe("Log user in", () => {
         describe("Given the email and password are correct", () => {
             it("should return true", async () => {
@@ -50,7 +51,7 @@ describe("user service", () => {
 
                 const isValid = await logInUser({
                     email: newUser.email,
-                    password: newUser.password
+                    password: userPayload.password
                 })
 
                 expect(isValid).toBeTruthy()
