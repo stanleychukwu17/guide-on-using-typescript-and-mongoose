@@ -56,3 +56,7 @@ userSchema.methods.comparePassword = async function (receivedPassword: string): 
     if (!check) { return false }
     return check
 }
+
+// exports the model
+const Users = mongoose.model<UserDocument>('Users', userSchema);
+export default Users;
