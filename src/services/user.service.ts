@@ -1,4 +1,4 @@
-import {DocumentDefinition, FilterQuery, QueryOptions} from 'mongoose'
+import mongoose, {DocumentDefinition, FilterQuery, QueryOptions} from 'mongoose'
 import User, { UserInput, UserDocument } from '../model/user.model'
 
 // the function creates a new user
@@ -28,4 +28,9 @@ export async function logInUser({email, password}: logInProps): Promise<boolean>
     }
 
     return user.comparePassword(password)
+}
+
+// deleting of all users, used majorly for testing
+export async function deleteAllUsers() {
+    return await User.deleteMany({})
 }
