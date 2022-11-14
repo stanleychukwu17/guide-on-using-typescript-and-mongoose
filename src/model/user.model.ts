@@ -39,7 +39,7 @@ userSchema.pre("save", async function (next) {
 
     // use bcrypt to generate a new password
     const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hashSync(user.password, salt);
+    const hash = bcrypt.hashSync(user.password, salt);
 
     // update the current user password to the hashed one
     user.password = hash;
